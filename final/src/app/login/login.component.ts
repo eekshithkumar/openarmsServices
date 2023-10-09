@@ -19,6 +19,7 @@ export class LoginComponent {
   async validateLogin(loginForm: any) {
     console.log(loginForm);
 
+
     //Implementing LocalStorage
     localStorage.setItem("emailId", loginForm.emailId);
 
