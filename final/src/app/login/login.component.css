@@ -78,6 +78,7 @@ body {
     margin-top: 20px;
   }
   
+  
   .button input {
     height: 45px;
     width: 100%;
@@ -92,6 +93,7 @@ body {
     background: linear-gradient(135deg, #71b7e6, #9b59b6);
   }
   
+
   .button input:hover {
     background: linear-gradient(-135deg, #71b7e6, #9b59b6);
   }
