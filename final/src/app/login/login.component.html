@@ -1,0 +1,38 @@
+<!--
+Enter loginID:  <input type="text"     name="loginId"  [(ngModel)]="loginId" />  <br/>
+Enter Password: <input type="password" name="password" [(ngModel)]="password" /> <br/>
+
+<button (click)="submit()" class="btn btn-primary">Login</button> <br/><br/>
+-->
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+</head>
+<div class="container">
+<form #loginForm="ngForm" (ngSubmit)="validateLogin(loginForm.value)" novalidate>
+  
+    <h1 class="title" >Login Page</h1>
+
+        <div class="column" style="width: 250px;">
+            <div class="input-box">
+                <span class="details"><i class="glyphicon glyphicon-user"></i></span>
+                <input class="input-field" type="text" name="emailId" ngModel #emailId="ngModel" placeholder="Enter Email-ID" required minlength="2" maxlength="30" />
+            </div> <br />
+
+            <div class="input-box">
+                <span  class="details"><i class="glyphicon glyphicon-lock"></i></span>
+                <input class="input-field" type="password" name="password" ngModel #password="ngModel"  placeholder="Enter Password" required minlength="2" maxlength="20" />
+            </div> <br />
+
+            <button class="btn btn-primary">Login</button>
+        </div> <br/><br/>
+
+    <div *ngIf="emailId.errors?.['required'] && emailId.touched"> <h2>Please Enter EmailId </h2></div> <br/>
+    <div *ngIf="password.errors?.['required'] && password.touched"> <h2>Please Enter Password </h2></div> <br/>
+
+    <div *ngIf="emailId.errors?.['minlength'] && emailId.touched"> <h2>Please Enter Atleast 2 Characters for EmailId</h2></div> <br/>
+    <div *ngIf="password.errors?.['minlength'] && password.touched"> <h2>Please Enter Atleast 2 Characters for Password </h2></div> <br/>
+</form>
+</div>

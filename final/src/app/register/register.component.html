@@ -1,0 +1,52 @@
+
+    <div class="container">
+        <div class="title">Customer Registration</div>
+        <form #regForm="ngForm" (ngSubmit)="customerRegister(regForm.value)">
+            <div class="user-details">
+                <div class="column">
+                    <div class="input-box">
+                        <span class="details">Customer First Name</span>
+                        <input type="text" name="firstName" ngModel required class="input-field" />
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Customer Last Name</span>
+                        <input type="text" name="lastName" ngModel required class="input-field" />
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Gender</span>
+                        <select name="gender" ngModel required class="input-field">
+                            <option value="" selected> Select Gender </option>
+                            <option value="male"> Male </option>
+                            <option value="female"> Female </option>
+                            <option value="others"> Others </option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Date of Join</span>
+                        <input type="date" name="doj" ngModel required class="input-field" />
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="input-box">
+                        <span class="details">Country</span>
+                        <select name="country" ngModel>
+                          <option value="" selected> Select Country </option>
+                          <option value="{{country.cca3}}" *ngFor="let country of coutriesList">{{country.name.common}}</option>
+                      </select>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">EmailId</span>
+                        <input type="text" name="emailId" ngModel required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" class="input-field" />
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Password</span>
+                        <input type="password" name="password" ngModel required minlength="8" class="input-field" />
+                    </div>
+                </div>
+            </div>
+            <div class="button">
+                <input [disabled]="!regForm.valid" type="submit" value="Register" class="submit-button" />
+            </div>
+        </form>
+    </div>
+
