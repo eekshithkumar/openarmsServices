@@ -40,5 +40,7 @@ export class LoginComponent {
         alert('Invalid Creadentials');
       }
     }
+
+    localStorage.setItem("customerName", this.customer.data);
   }
 }

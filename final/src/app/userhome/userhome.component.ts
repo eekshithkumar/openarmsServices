@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { CustomerService } from '../customer.service';
 
 @Component({
   selector: 'app-userhome',
@@ -6,5 +8,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./userhome.component.css']
 })
 export class UserhomeComponent {
-
-}
+  }

@@ -22,7 +22,8 @@ export class RegisterComponent implements OnInit {
       "country": "",
       "emailId": "",
       "password": "",
-      "doj":"",
+      "dob":"",
+      "phone":""
       }
   }
 
@@ -35,15 +36,9 @@ export class RegisterComponent implements OnInit {
 
     console.log(regForm);
 
-    this.customer.firstName = regForm.firstName;
-    this.customer.lastName = regForm.lastName;
-    this.customer.gender = regForm.gender;
-    this.customer.country = regForm.country;
-    this.customer.emailId = regForm.emailId;
-    this.customer.password = regForm.password;
-    this.customer.doj = regForm.doj;
+   
 
-    this.service.customerRegister(this.customer).subscribe((data: any) => {
+    this.service.customerRegister(regForm).subscribe((data: any) => {
       console.log(data);
     });
   }

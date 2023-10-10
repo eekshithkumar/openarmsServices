@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { LogoutComponent } from './logout/logout.component';
+import { ExpPipe } from './exp.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LogoutComponent } from './logout/logout.component';
     HeaderComponent,
     GenderPipe,
     UserhomeComponent,
-    LogoutComponent
+    LogoutComponent,
+    ExpPipe
     
   ],
   imports: [

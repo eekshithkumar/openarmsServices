@@ -1,6 +1,6 @@
 
     <div class="container">
-        <div class="title">Customer Registration</div>
+        <div class="title">Registration</div>
         <form #regForm="ngForm" (ngSubmit)="customerRegister(regForm.value)">
             <div class="user-details">
                 <div class="column">
@@ -22,8 +22,8 @@
                         </select>
                     </div>
                     <div class="input-box">
-                        <span class="details">Date of Join</span>
-                        <input type="date" name="doj" ngModel required class="input-field" />
+                        <label class="details" >Date of Birth:</label>
+                        <input type="date" name="dob"  ngModel required class="input-field" min="1900-01-01" max="2023-10-09">
                     </div>
                 </div>
                 <div class="column">
@@ -34,13 +34,17 @@
                           <option value="{{country.cca3}}" *ngFor="let country of coutriesList">{{country.name.common}}</option>
                       </select>
                     </div>
+                    <div class="input-box" >
+                    <span class="details">Phone Number:</span>
+                        <input type="text" class="input-field" ngModel name="phone" pattern="[0-9]{10}" placeholder="Enter a 10-digit phone number" required>
+                    </div>
                     <div class="input-box">
                         <span class="details">EmailId</span>
                         <input type="text" name="emailId" ngModel required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" class="input-field" />
                     </div>
                     <div class="input-box">
                         <span class="details">Password</span>
-                        <input type="password" name="password" ngModel required minlength="8" class="input-field" />
+                        <input type="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$" ngModel required minlength="8" class="input-field" />
                     </div>
                 </div>
             </div>
