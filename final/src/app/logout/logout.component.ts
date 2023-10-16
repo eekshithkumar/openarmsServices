@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CustomerService } from '../customer.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-logout',
@@ -9,9 +11,12 @@ import { CustomerService } from '../customer.service';
 })
 export class LogoutComponent {
 
-  constructor(private router: Router, private service: CustomerService) {
+  constructor(private router: Router, private service: CustomerService,private toastr: ToastrService) {
     this.service.setUserLoggedOut();
+    this.showSuccess();
     router.navigate(['login']);
   }
-
+  showSuccess() {
+    this.toastr.success('Logout', 'Successful');
+  }
 }

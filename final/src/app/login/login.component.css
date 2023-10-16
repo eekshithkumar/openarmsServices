@@ -1,110 +1,226 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('src\assets\img\img-2.jpg'); /* Replace 'path-to-your-image.jpg' with the actual path to your image */
+  background-size: cover; /* This property scales the image to cover the entire background */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-attachment: fixed; /* Keeps the background image fixed while scrolling */
+  /* You can add more styles here for other elements */
+}
+
+
+nav {
+  background-color: transparent; /* Remove background color */
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+
+/* Style the links (you can customize this further) */
+.login-register a, .home-link a {
+  text-decoration: none;
+  color: #333;
+  margin-left: 10px;
+}
+
+
 /* styles.css */
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    margin: 0;
-  }
-  
+  font-family: 'Poppins', sans-serif;
+  background-color:transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.xcontainer {
+  width: 100%;
+  min-width: 300px;
+  max-width: 400px; /* Adjust the maximum width as needed */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Adjust the gap between columns */
+}
+
+.xcontainer .title {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+
+.xcontainer .title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.user-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.column {
+  flex: 1;
+  margin-right: 10px; /* Adjust the spacing between columns */
+}
+
+.input-box {
+  margin-bottom: 15px;
+}
+
+.input-box input,
+.input-box select {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.input-box input:focus,
+.input-box select:focus,
+.input-box input:valid,
+.input-box select:valid {
+  border-color: #9b59b6;
+}
+
+.button {
+  margin-top: 20px;
+}
+
+.button input {
+  height: 45px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.button input:hover {
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+}
+
+@media (max-width: 584px) {
   .container {
-    width:fit-content;
-    max-width: 600px; /* Adjust the maximum width as needed */
-    max-height: 350px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Adjust the gap between columns */
+      max-width: 100%;
+      flex-direction: column;
   }
-  
-  .container .title {
-    font-size: 25px;
-    font-weight: 500;
-    position: relative;
-  }
-  
-  .container .title::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 3px;
-    width: 30px;
-    border-radius: 5px;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
-  }
-  
-  .user-details {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
+
   .column {
-    flex: 1;
-    margin-right: 10px; /* Adjust the spacing between columns */
+      margin-right: 0;
+      margin-bottom: 10px; /* Adjust the gap between columns on smaller screens */
   }
-  
-  .input-box {
-    margin-bottom: 15px;
-  }
-  
-  .input-box input,
-  .input-box select {
-    height: 45px;
-    width: 100%;
-    outline: none;
-    font-size: 16px;
-    border-radius: 5px;
-    padding-left: 15px;
-    border: 1px solid #ccc;
-    border-bottom-width: 2px;
-    transition: all 0.3s ease;
-  }
-  
-  .input-box input:focus,
-  .input-box select:focus,
-  .input-box input:valid,
-  .input-box select:valid {
-    border-color: #9b59b6;
-  }
-  
-  .button {
-    margin-top: 20px;
-  }
-  
-  .button input {
-    height: 45px;
-    width: 100%;
-    border-radius: 5px;
-    border: none;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
-  }
-  
-  .button input:hover {
-    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
-  }
-  
-  @media (max-width: 584px) {
-    .container {
-        max-width: 100%;
-        flex-direction: column;
-    }
-  
-    .column {
-        margin-right: 0;
-        margin-bottom: 10px; /* Adjust the gap between columns on smaller screens */
-    }
-  }
-  
+}
+
+/* Add these styles to your CSS file */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+#close-popup {
+  background: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+
+/* Footer */
+footer{
+  background-color: #303054;
+  color: #e6edff;
+  padding: 50px 0;
+}
+footer h4{
+  margin-bottom: 20px;
+}
+footer p a{
+  text-decoration: none;
+  color: #e6edff;
+}
+footer p a:hover{
+  text-decoration: none;
+  color: #e6edff;
+}
+
+
+footer .col-two ul li{
+  list-style: none;
+}
+
+footer .col-two ul li a{
+  color: #e6edff;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+footer .col-two ul li a:hover{
+  margin-left: 5px;
+}
+footer .social{
+  margin-bottom: 30px;
+}
+footer .social a img{
+  width: 20px;
+  margin-right: 15px;
+}
+
+/* Scroll Bar */
+
+::-webkit-scrollbar{
+  width: 5px;
+}
+
+::-webkit-scrollbar-track{
+  border: 7px solid transparent;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #303054;
+}

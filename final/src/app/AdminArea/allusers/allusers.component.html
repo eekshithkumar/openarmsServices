@@ -1,0 +1,122 @@
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+</head>
+<app-adminheader></app-adminheader>
+<body>
+<div style="padding-top: 50px;">
+</div>
+
+<h1 align="center">Customers Data</h1>
+
+<div class="container">
+<table class="table table-hover table-striped table-bordered">
+
+    <thead>
+        <tr align="center">
+            <th class="bg-info text-white">CustId</th>
+            <th class="bg-info text-white">First Name</th>
+            <th class="bg-info text-white">Last Name</th>
+            <th class="bg-info text-white">DOB</th>
+            <th class="bg-info text-white">Gender</th>
+            <th class="bg-info text-white">Country</th>
+            <th class="bg-info text-white">phone number</th>
+            <th class="bg-info text-white">EmailId</th>
+            <th class="bg-info text-white" colspan="2">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let customer of customers" align="center">
+            <td>{{customer.custId   }}</td>
+            <td>{{customer.firstName | uppercase}}</td>
+            <td>{{customer.lastName | uppercase }}</td>
+            <td>{{customer.dob  }}</td>
+            <td>{{customer.gender  | lowercase }}</td>
+            <td>{{customer.country }}</td>
+            <td>{{customer.phone   }}</td>
+            <td>{{customer.emailId }}</td>
+            <td><button (click)="editCustomer(customer)"><span class="glyphicon glyphicon-pencil"></span></button></td>
+            <td><button (click)="deleteCustomer(customer.custId)"><span class="glyphicon glyphicon-trash"></span></button></td>
+        </tr>
+    </tbody>
+
+</table>
+</div>
+
+
+
+
+<div class="container">
+
+    <!-- Modal -->
+  <div class="modal fade" id="CustModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title">Update Customer</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <table align="center">
+                <tbody>   
+                    <tr>
+                        <td>Customer Id</td>
+                        <td><input type="text" name="empId" [(ngModel)]="customerObj.empId" readonly /></td>
+                    </tr>        
+                    <tr>
+                        <td>Customer Name</td>
+                        <td><input type="text" name="firstName" [(ngModel)]="customerObj.empName" /></td>
+                    </tr>
+                    <tr>
+                        <td>Customer Name</td>
+                        <td><input type="text" name="lastName" [(ngModel)]="customerObj.empName" /></td>
+                    </tr>
+                    <tr>
+                        <td>Date of Join</td>
+                        <td><input type="date" name="doj" [(ngModel)]="customerObj.doj" /></td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td><input type="text" name="gender" [(ngModel)]="customerObj.gender" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>Country</td>
+                        <td><select name="country" [(ngModel)]="customerObj.country">
+                            <option value="" selected> Select Country </option>
+                            <option value="{{country.cca3}}" *ngFor="let country of coutriesList">{{country.name.common}}</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td>Phone number</td>
+                        <td><input type="number" name="phone" [(ngModel)]="customerObj.salary" /></td>
+                    </tr>
+                    <tr>
+                        <td>EmailId</td>
+                        <td>
+                            <input type="text" name="emailId" [(ngModel)]="customerObj.emailId" readonly/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="password" name="password" [(ngModel)]="customerObj.password" readonly /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" (click)="updateCustomer()" class="btn btn-default" data-dismiss="modal">Update Customer</button>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+</body>

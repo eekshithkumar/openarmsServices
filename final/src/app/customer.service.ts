@@ -11,10 +11,14 @@ export class CustomerService {
 
   isUserLogged: boolean;
 
+
   //Dependency Injection for HTTPClient
   constructor(private http: HttpClient) {
     this.isUserLogged = false;
+
   }
+
+
 
   getCountries(): any {
     return this.http.get('https://restcountries.com/v3.1/all');
@@ -24,6 +28,9 @@ export class CustomerService {
     return this.http.get('http://localhost:8085/getAllCustomers');
   }
 
+
+
+  
   getCustomersById(custId: any): any {
     return this.http.get('http://localhost:8085/getCustomerById/' + custId);
   }
@@ -58,4 +65,5 @@ export class CustomerService {
     return this.isUserLogged;
   }
 
+  
 }

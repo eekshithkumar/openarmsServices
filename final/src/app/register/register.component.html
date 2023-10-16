@@ -1,56 +1,127 @@
-
-    <div class="container">
+<app-outrheader></app-outrheader>
+<body>
+    <div class="xcontainer">
         <div class="title">Registration</div>
         <form #regForm="ngForm" (ngSubmit)="customerRegister(regForm.value)">
             <div class="user-details">
                 <div class="column">
                     <div class="input-box">
-                        <span class="details">Customer First Name</span>
-                        <input type="text" name="firstName" ngModel required class="input-field" />
+                        <input type="text" name="firstName" ngModel required class="input-field" placeholder="First Name"/>
+                        <div *ngIf="regForm.controls['firstName'].invalid && regForm.controls['firstName'].touched">
+                            <p class="error" style="color: red; font-size: 12px;">First Name is required.</p>
+                        </div>
+                        
                     </div>
                     <div class="input-box">
-                        <span class="details">Customer Last Name</span>
-                        <input type="text" name="lastName" ngModel required class="input-field" />
+                        <input type="text" name="lastName" ngModel required class="input-field" placeholder="Last Name" />
+                        <div *ngIf="regForm.controls['lastName'].invalid && regForm.controls['lastName'].touched">
+                            <p class="error" style="color: red; font-size: 12px;">Last Name is required.</p>
+                        </div>
                     </div>
                     <div class="input-box">
-                        <span class="details">Gender</span>
                         <select name="gender" ngModel required class="input-field">
                             <option value="" selected> Select Gender </option>
                             <option value="male"> Male </option>
                             <option value="female"> Female </option>
                             <option value="others"> Others </option>
                         </select>
+                        <div *ngIf="regForm.controls['gender'].invalid && regForm.controls['gender'].touched">
+                            <p class="error" style="color: red; font-size: 12px;">Please select a Gender.</p>
+                        </div>
                     </div>
                     <div class="input-box">
-                        <label class="details" >Date of Birth:</label>
-                        <input type="date" name="dob"  ngModel required class="input-field" min="1900-01-01" max="2023-10-09">
+                        <label class="details">Date of Birth:</label>
+                        <input type="date" name="dob" ngModel required class="input-field" min="1900-01-01" max="2005-10-09">
+                        <div *ngIf="regForm.controls['dob'].invalid && regForm.controls['dob'].touched">
+                            <p class="error" style="color: red; font-size: 12px;">"Invalid Date of Birth entered."</p>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <select name="country" ngModel required class="input-field">
+                            <option value="" selected> Select Country </option>
+                            <option value="{{country.cca3}}" *ngFor="let country of coutriesList">{{country.name.common}}</option>
+                        </select>
+                        <div *ngIf="regForm.controls['country'].invalid && regForm.controls['country'].touched">
+                            <p class="error" style="color: red; font-size: 12px;">Please select a Country.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="column">
                     <div class="input-box">
-                        <span class="details">Country</span>
-                        <select name="country" ngModel>
-                          <option value="" selected> Select Country </option>
-                          <option value="{{country.cca3}}" *ngFor="let country of coutriesList">{{country.name.common}}</option>
-                      </select>
-                    </div>
-                    <div class="input-box" >
-                    <span class="details">Phone Number:</span>
-                        <input type="text" class="input-field" ngModel name="phone" pattern="[0-9]{10}" placeholder="Enter a 10-digit phone number" required>
+                        <input type="text" class="input-field" ngModel name="phone" pattern="^[6-9][0-9]{9}$" placeholder="Enter a 10-digit phone number" required maxlength="10">
+                        <div *ngIf="regForm.controls['phone'].invalid && regForm.controls['phone'].touched">
+                            <p class="error" style="color: red; font-size: 12px;">Enter valid 10-digit phone, starting 6-9.</p>
+                        </div>
                     </div>
                     <div class="input-box">
-                        <span class="details">EmailId</span>
-                        <input type="text" name="emailId" ngModel required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" class="input-field" />
+                        <input type="text" name="emailId" ngModel required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" class="input-field" placeholder="example@gmail.com"/>
+                        <div *ngIf="regForm.controls['emailId'].invalid && regForm.controls['emailId'].touched">
+                            <p class="error" style="color: red; font-size: 12px;">Please enter a valid Email Id.</p>
+                        </div>
                     </div>
                     <div class="input-box">
-                        <span class="details">Password</span>
-                        <input type="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$" ngModel required minlength="8" class="input-field" />
+                        <input type="password" placeholder="Password" name="password" ngModel required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$" minlength="8" class="input-field" />
+                        <div *ngIf="regForm.controls['password'].invalid && regForm.controls['password'].touched">
+                            <p class="error" style="color: red; font-size: 12px;">"Invalid password. Use uppercase, lowercase, number, and special character."</p>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <input type="password"  placeholder="Confirm Password" name="confirmPassword" ngModel required />
+                        <div *ngIf="regForm.controls['confirmPassword'].invalid && regForm.controls['confirmPassword'].touched">
+                            <p class="error" style="color: red; font-size: 12px;">Please confirm your password.</p>
+                        </div>
+                        <div *ngIf="regForm.controls['password'].value !== regForm.controls['confirmPassword'].value && regForm.controls['confirmPassword'].touched">
+                            <p class="error" style="color: red; font-size: 12px;">Passwords do not match.</p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="button">
                 <input [disabled]="!regForm.valid" type="submit" value="Register" class="submit-button" />
             </div>
+ 
+        <div style="text-align: center;">-- or --</div>
+    
+        <div class="submit-button"  style="text-align: center; border-style: outset; padding: 8px; border-color: blueviolet;"><a routerLink="/login">Login</a></div>
         </form>
     </div>
-
+</body>
+<footer>
+    <div class="container" id="contact" style="padding: 20px;">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="col-one">
+                    <h4>MAB CORP foundation</h4>
+                    <p>Address : 3, Near IT Park, GT Road, Lahore 440000 </p>
+                    <p>Contact No : <a href="tel: +92 30059****59">+92 30059****59</a></p>
+                    <p>Email : <a href="mailto:foundation@mabcorp.com">foundation@mabcorp.com</a></p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="col-two">
+                    <h4>Important Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#donation">Donations</a></li>
+                        <li><a href="#mission-id">Missions</a></li>
+                        <li><a href="#about">About us</a></li>
+                        <li><a href="#contact">Contact us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="col-one">
+                    <h4>Social Media</h4>
+                    <div class="social">
+                        <a href="#"><img src="assets/img/icons/facebook.png" alt="facebook"></a>
+                        <a href="#"><img src="assets/img/icons/instagram.png" alt="instagram"></a>
+                        <a href="#"><img src="assets/img/icons/youtube.png" alt="youtube"></a>
+                        <a href="#"><img src="assets/img/icons/linkedin.png" alt="linkedin"></a>
+                        <a href="#"><img src="assets/img/icons/gmail.png" alt="gnail"></a>
+                    </div>
+                    <p>Copyright &copy; 2023 | All Right Reserved</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

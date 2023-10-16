@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { Router } from '@angular/router';
 import { CustomerService } from '../customer.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent {
   customer: any;
 
   //Dependency Injection for Router, EmpService
-  constructor(private router: Router, private service: CustomerService) {
+  constructor(private router: Router, private service: CustomerService, private toastr: ToastrService) {
   }
 
   async validateLogin(loginForm: any) {
@@ -22,9 +23,10 @@ export class LoginComponent {
     //Implementing LocalStorage
     localStorage.setItem("emailId", loginForm.emailId);
 
-    if (loginForm.emailId == "HR" && loginForm.password == "HR") {
+    if (loginForm.emailId == "admin" && loginForm.password == "admin") {
       this.service.setUserLoggedIn();
-      this.router.navigate(['userhome']);
+      this.showSuccess()
+      this.router.navigate(['adminhome']);
 
     } else {
 
@@ -35,12 +37,19 @@ export class LoginComponent {
 
       if (this.customer != null) {
         this.service.setUserLoggedIn();
-        this.router.navigate(['userhome']);
+        this.router.navigate(['userhome'], { state: { customer: this.customer } });
       } else {
-        alert('Invalid Creadentials');
+        this.showFail();
       }
     }
 
     localStorage.setItem("customerName", this.customer.data);
+  }
+  showSuccess() {
+    this.toastr.success('Login', 'Successful');
+  }
+
+  showFail() {
+    this.toastr.warning('Login Fail', 'Invalid credentials')
   }
 }

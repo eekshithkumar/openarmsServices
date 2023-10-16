@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../customer.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +15,7 @@ export class RegisterComponent implements OnInit {
   
 
   //Dependency Injection for EmpService
-  constructor(private service: CustomerService) {
+  constructor(private router: Router, private service: CustomerService, private toastr: ToastrService) {
     this.customer = {
       "empId": "",
       "firstName": "",
@@ -40,7 +42,15 @@ export class RegisterComponent implements OnInit {
 
     this.service.customerRegister(regForm).subscribe((data: any) => {
       console.log(data);
+
+      if (data != null ) {
+        // If successful, navigate to the login component
+        this.showSuccess()
+        this.router.navigate(['login']);
+      }
     });
   }
-
+  showSuccess() {
+    this.toastr.success('Registration', 'Successful');
+  }
 }
