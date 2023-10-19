@@ -62,12 +62,13 @@ public class CustomerController {
 	    if (customer != null) {
 	        BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 	        if (bcrypt.matches(password, customer.getPassword())) {
+	        	System.out.println("Login Success");
 	            return customer;
 	        }
 	    }
+	    System.out.println("Login fail");
 	    return null; // Return null if login fails
 	}
-		
 	
 
 }

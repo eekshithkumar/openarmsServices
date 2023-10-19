@@ -1,10 +1,15 @@
 package com.model;
 
 import java.sql.Date;
-
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 
 public class Customer {
@@ -13,16 +18,33 @@ public class Customer {
 	@GeneratedValue
 	private int custId;
 	private String firstName;
-	private String lastName;	
+	private String lastName;
 	private String gender;
 	private String country;
 	private String emailId;
-	private String password; 
+	private String password;
 	private Date dob;
 	private String phone;
-	
+
+	 @JsonIgnore
+	 @OneToMany(mappedBy = "customer")
+	 List<Donation> donList = new ArrayList<Donation>();
+	 
+	 @JsonIgnore
+	 @OneToMany(mappedBy = "customer")
+	 List<Fund> fundList = new ArrayList<Fund>();
+
+	public List<Fund> getFundList() {
+		return fundList;
+	}
+
+	public void setFundList(List<Fund> fundList) {
+		this.fundList = fundList;
+	}
+
 	public Customer() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Customer(int custId, String firstName, String lastName, String gender, String country, String emailId,
@@ -111,8 +133,13 @@ public class Customer {
 		this.phone = phone;
 	}
 	
-	public String getFullName(){
-		return firstName +" "+ lastName;
+
+	public List<Donation> getDonList() {
+		return donList;
+	}
+
+	public void setDonList(List<Donation> donList) {
+		this.donList = donList;
 	}
 	
 

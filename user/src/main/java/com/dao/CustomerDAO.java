@@ -28,13 +28,21 @@ public class CustomerDAO {
 	}
 	
 	public Customer registerCustomer(Customer cust) {
-		BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
-		String encryptedPwd = bcrypt.encode(cust.getPassword());
-		cust.setPassword(encryptedPwd);
-		System.out.println("Register Success");
-		
-		return customerRepository.save(cust);
+	    String rawPassword = cust.getPassword();
+
+	    if (rawPassword != null) {
+	        BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
+	        String encryptedPwd = bcrypt.encode(rawPassword);
+	        cust.setPassword(encryptedPwd);
+	        System.out.println("Register Success");
+	        return customerRepository.save(cust);
+	    } else {
+	        // Handle the case where the password is null (e.g., return an error, throw an exception, or handle it as needed)
+	        System.out.println("Password is null");
+	        return null;  // You should decide how to handle this situation
+	    }
 	}
+
 	
 	public Customer updateCustomer(Customer cust) {
 		return customerRepository.save(cust);
