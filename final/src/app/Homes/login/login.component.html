@@ -1,0 +1,322 @@
+<app-outrheader></app-outrheader>
+
+<body>
+    <section class="home-sec" id="home">
+        <div class="container">
+            <div class="home-content">
+                <div class="row">
+                    <div class="col-lg-6 align-item-center">
+                        <div class="home-info">
+                            <br><br><br>
+                            <div class="xcontainer" style="align-content:center ; background-color: white;">
+                                <form #loginForm="ngForm" (ngSubmit)="validateLogin(loginForm.value)" novalidate>
+                                    <div class="input-box">
+                                        <input class="input-field" type="text" name="emailId" ngModel #emailId="ngModel"
+                                            placeholder="Enter Email-ID" required minlength="2" maxlength="30"
+                                            [ngClass]="{'is-invalid': emailId.invalid && emailId.touched}" />
+                                        <div *ngIf="emailId.invalid && emailId.touched" class="invalid-feedback">
+                                            <h2 *ngIf="emailId.errors?.['required'] && emailId.touched"></h2>
+                                            <h2 *ngIf="password.errors?.['required'] && password.touched"></h2>
+                                        </div>
+                                    </div>
+                                    
+                    
+                                    <div class="input-box">
+                                        <input class="input-field" type="password" name="password" ngModel #password="ngModel"
+                                            placeholder="Enter Password" required minlength="2" maxlength="20"
+                                            [ngClass]="{'is-invalid': password.invalid && password.touched}" />
+                                        <div *ngIf="password.invalid && password.touched" class="invalid-feedback">
+                                            <div *ngIf="emailId.errors?.['minlength'] && emailId.touched"></div>
+                                            <div *ngIf="password.errors?.['minlength'] && password.touched"></div>
+                                        </div>
+                                    </div>
+                                    <div class="button">
+                                        <input type="submit" value="Login" class="submit-button" /> &nbsp; | &nbsp; <a class="btn1"
+                                        routerLink="/register">Sign In</a>
+                                    </div>
+                                </form>
+                    
+                                <!-- <form #loginForm="ngForm" (ngSubmit)="validateLogin(loginForm.value)" novalidate>
+                                    <div class="input-box">
+                                        <input class="input-field" type="text" name="emailId" ngModel #emailId="ngModel"
+                                            placeholder="Enter Email-ID" required minlength="2" maxlength="30"
+                                            [ngClass]="{'is-invalid': emailId.invalid && emailId.touched}" />
+                                        <div *ngIf="emailId.invalid && emailId.touched" class="invalid-feedback">
+                                            <h2 *ngIf="emailId.errors?.['required'] && emailId.touched"></h2>
+                                            <h2 *ngIf="password.errors?.['required'] && password.touched"></h2>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-box">
+                                        <input class="input-field" type="password" name="password" ngModel
+                                            #password="ngModel" placeholder="Enter Password" required minlength="2"
+                                            maxlength="20"
+                                            [ngClass]="{'is-invalid': password.invalid && password.touched}" />
+                                        <div *ngIf="password.invalid && password.touched" class="invalid-feedback">
+                                            <div *ngIf="emailId.errors?.['minlength'] && emailId.touched"></div>
+                                            <div *ngIf="password.errors?.['minlength'] && password.touched"></div>
+                                        </div>
+                                    </div>
+                                    <div class="button">
+                                        <a type="submit" style="min-width: 220px; text-align: center;" value="Login"
+                                            class="btn1">Login</a> &nbsp; | &nbsp; <a class="btn1"
+                                            routerLink="/register">Sign In</a>
+                                    </div>
+                                </form> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-first order-lg-last">
+                        <div class="img-sec">
+                            <img src="assets/img/img-1.png" alt="home-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mission" id="mission-id">
+        <div class="container">
+            <div class="heading">
+                <h2>Our Missions</h2>
+                <p>We have delivered <span>Wastage</span> or <span>Donations</span> to needy Peoples</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="don-sec" id="dhome">
+        <div class="container">
+            <div class="heading">
+                <h2>We Manage Wastage or Donation like..</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="assets/img/don/clothing.png" alt="img">
+                        <h3>Clothes</h3>
+                        <p>Give your clothes a second chance: donate them today and help make a difference.</p>
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="assets/img/don/sneakers.png" alt="img">
+                        <h3>Footware</h3>
+                        <p>Step up and make a difference: donate your footwear today and help those in need.</p>
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="assets/img/don/salary.png" alt="img">
+                        <h3>Fund</h3>
+                        <p>Your donation can make a world of difference: give today to support our cause and help those
+                            in need.</p>
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="assets/img/don/gadgets.png" alt="img">
+                        <h3>Gadgets</h3>
+                        <p>Unlock the power of giving: donate your gadgets today and help bridge the digital divide for
+                            those in need.</p>
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="assets/img/don/book.png" alt="img">
+                        <h3>Stationary</h3>
+                        <p>Make a mark in someone's life: donate stationery today and educational resources for in need.
+                        </p>
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="assets/img/don/shopping-bag.png" alt="img">
+                        <h3>Food</h3>
+                        <p>Feed a hungry mouth today:donate food and help fight hunger in your community.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-sec" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 about-img">
+                    <img style="height: 250px; width: 300px;" src="assets/img/img-2.jpg" alt="about">
+                </div>
+                <div class="col-lg-8 order-first order-lg-last">
+                    <div class="heading">
+                        <h2>What We Do & Why We Do</h2>
+                    </div>
+                    <p>At [Welfare Foundation Name], we believe that everyone deserves the chance to live a healthy and
+                        fulfilling life. Our mission is to improve the lives of people in need by providing access to
+                        basic necessities such as food, shelter, education, and healthcare. We work tirelessly to
+                        identify the most pressing needs in our community and develop programs and initiatives to
+                        address those needs. </p>
+                    <p>Through our fundraising efforts and the generous support of our donors, we are able to make a
+                        positive impact on the lives of thousands of people every year. Whether it's providing a warm
+                        meal to someone in need or helping a child receive an education, we are dedicated to making a
+                        difference in our community and beyond.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="don-sec" id="dhome">
+        <div class="container">
+            <div class="heading">
+                <h2>Here’s what people say about us..</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="assets/img\don\clothing.png" alt="img">
+                        <h3>Priyanka
+                            Chopra</h3>
+                        <p>I decided to start our #TogetherForIndia fundraiser for the COVID-19 crisis, we wanted a
+                            partner
+                            with experience &amp; boots on the ground. So we turned to GiveIndia. They were transparent,
+                            providing regular updates on where &amp; how funds were deployed. Also, their work on ground
+                            meant we could pivot our objectives basis changing needs. Their team of professional,
+                            passionate
+                            people ensured aid was given where most needed.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="assets/img\don\clothing.png" alt="img">
+                        <h3>Vinod
+                            Khosla</h3>
+                        <p>I decided to start our #TogetherForIndia fundraiser for the COVID-19 crisis, we wanted a
+                            partner
+                            with experience &amp; boots on the ground. So we turned to GiveIndia. They were transparent,
+                            providing regular updates on where &amp; how funds were deployed. Also, their work on ground
+                            meant we could pivot our objectives basis changing needs. Their team of professional,
+                            passionate
+                            people ensured aid was given where most needed.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="assets/img\don\clothing.png" alt="img">
+                        <h3>Priyanka
+                            Chopra</h3>
+                        <p>GiveIndia's
+                            pursuit of bringing trust, convenience and choice for donors, is aligned with our goal to
+                            enable
+                            more informed and intentional generosity by everyday givers. We are happy to be a part of
+                            this
+                            respected group of funders who have come forward to support this effort.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="assets/img\don\clothing.png" alt="img">
+                        <h3>Dr. Devi
+                            Shetty</h3>
+                        <p>There is a
+                            healthcare crisis looming and we must act fast to protect our frontline workers. Doctors,
+                            nurses
+                            and paramedics' safety is crucial to providing healthcare to patients and we are
+                            prioritising
+                            that through the India COVID Response fund.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="assets/img\don\clothing.png" alt="img">
+                        <h3>Priyanka
+                            Chopra</h3>
+                        <p>GiveIndia was
+                            one of the first to understand the challenges that we as a society faced and mobilised
+                            enormous
+                            resources to support the people in need - a commendable job, thank you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="about-sec">
+        <div class="PlatformStats_ps_wrapper__2GYqK">
+            <div class="PlatformStats_ps_content_wrapper__Ftoqb">
+                <div class="PlatformStats_ps_upper_wrapper__1DZQi">
+                    <div class="PlatformStats_ps_logo_wrapper__lzVQb">
+                        <div class="slider-img-wrapper"
+                            style="background: transparent; cursor: pointer; min-height: 100%;">
+                            <span class=" lazy-load-image-background blur lazy-load-image-loaded"
+                                style="color: transparent; display: inline-block;">OACS</span>
+                        </div>
+                        <div></div>
+                    </div>
+                    <h1 class="PlatformStats_stats_heading__VAS1G">India’s most trusted online <br> donation platform
+                    </h1>
+                </div>
+                <div style="background-color:#fff;" class="PlatformStats_ps_bottom_wrapper__1qtOW">
+                    <div class="PlatformStats_ps_stats_box__3Xtak">
+                        <p class="PlatformStats_ps_stats_value__158Lx">2.6M+</p>
+                        <p class="PlatformStats_ps_stats_name__Io7nO">Donors</p>
+                    </div>
+                    <div class="PlatformStats_ps_stats_box__3Xtak">
+                        <p class="PlatformStats_ps_stats_value__158Lx">15M+</p>
+                        <p class="PlatformStats_ps_stats_name__Io7nO">Lives Impacted</p>
+                    </div>
+                    <div class="PlatformStats_ps_stats_box__3Xtak">
+                        <p class="PlatformStats_ps_stats_value__158Lx">3000+</p>
+                        <p class="PlatformStats_ps_stats_name__Io7nO">Verified Non Profits</p>
+                    </div>
+                    <div class="PlatformStats_ps_stats_box__3Xtak">
+                        <p class="PlatformStats_ps_stats_value__158Lx">300+</p>
+                        <p class="PlatformStats_ps_stats_name__Io7nO">Corporate Partners</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container" id="contact" style="padding: 20px;">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="col-one">
+                        <h4>MAB CORP foundation</h4>
+                        <p>Address : 3, Near IT Park, GT Road, Lahore 440000 </p>
+                        <p>Contact No : <a href="tel: +92 30059****59">+92 30059****59</a></p>
+                        <p>Email : <a href="mailto:foundation@mabcorp.com">foundation@mabcorp.com</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="col-two">
+                        <h4>Important Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#donation">Donations</a></li>
+                            <li><a href="#mission-id">Missions</a></li>
+                            <li><a href="#about">About us</a></li>
+                            <li><a href="#contact">Contact us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="col-one">
+                        <h4>Social Media</h4>
+                        <div class="social">
+                            <a href="#"><img src="assets/img/icons/facebook.png" alt="facebook"></a>
+                            <a href="#"><img src="assets/img/icons/instagram.png" alt="instagram"></a>
+                            <a href="#"><img src="assets/img/icons/youtube.png" alt="youtube"></a>
+                            <a href="#"><img src="assets/img/icons/linkedin.png" alt="linkedin"></a>
+                            <a href="#"><img src="assets/img/icons/gmail.png" alt="gnail"></a>
+                        </div>
+                        <p>Copyright &copy; 2023 | All Right Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>

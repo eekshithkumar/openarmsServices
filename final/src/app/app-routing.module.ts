@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './Homes/outerheader/home.component';
+import { LoginComponent } from './Homes/login/login.component';
+import { RegisterComponent } from './Homes/register/register.component';
+import { HomeComponent } from './Homes/home/home.component';
 import { authGuard } from './auth.guard';
-import { HeaderComponent } from './headers/userheader/header.component';
-import { UserhomeComponent } from './Homes/userhome/userhome.component';
-import { LogoutComponent } from './logout/logout.component';
-import { OutrheaderComponent } from './headers/outrheader/outrheader.component';
+import { HeaderComponent } from './UserArea/userheader/header.component';
+import { UserhomeComponent } from './UserArea/userhome/userhome.component';
+import { LogoutComponent } from './Homes/logout/logout.component';
+import { OutrheaderComponent } from './Homes/outrheader/outrheader.component';
 import { ShowuserbyidComponent } from './AdminArea/showuserbyid/showuserbyid.component';
 import { AdminheaderComponent } from './AdminArea/adminheader/adminheader.component';
 import { AdminhomeComponent } from './AdminArea/adminhome/adminhome.component';
 import { AllusersComponent } from './AdminArea/allusers/allusers.component';
+import { MydonationComponent } from './UserArea/mydonation/mydonation.component';
+import { MyfundComponent } from './UserArea/myfund/myfund.component';
+import { SpecialComponent } from './UserArea/special/special.component';
+import { AllfundsComponent } from './AdminArea/allfunds/allfunds.component';
+import { AlldonationsComponent } from './AdminArea/alldonations/alldonations.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
@@ -25,7 +30,12 @@ const routes: Routes = [
   {path:"adminhome",canActivate:[authGuard],component:AdminhomeComponent},
   {path:"adminheader",canActivate:[authGuard],component:AdminheaderComponent},
   {path: "showuserbyid", canActivate:[authGuard],component:ShowuserbyidComponent},
-  {path: "allusers", canActivate:[authGuard], component:AllusersComponent}
+  {path: "allusers", canActivate:[authGuard], component:AllusersComponent},
+  {path: "mydonation", component:MydonationComponent, data: { customer: 'data' }},
+  {path: "myfund", component:MyfundComponent, data: { customer: 'data' }},
+  {path: "special", component:SpecialComponent, data: { customer: 'data' }},
+  {path: "allfunds", canActivate:[authGuard], component:AllfundsComponent},
+  {path: "alldonations", canActivate:[authGuard], component:AlldonationsComponent}
 ];
 
 @NgModule({

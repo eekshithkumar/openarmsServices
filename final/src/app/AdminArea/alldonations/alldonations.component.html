@@ -1,0 +1,41 @@
+<app-adminheader></app-adminheader>
+<body style="padding-top: 60px;">
+    <h1 align="center" style="font-size: 24px; margin: 10px;">Donations Data</h1>
+    <div class="container">
+        <div style="overflow-x: auto;">
+            <table class="table table-hover table-striped table-bordered" style="width: 100%;">
+                <thead>
+                    <tr align="center">
+                        <th class="bg-info text-white col-2">Donation Id</th>
+                        <th class="bg-info text-white col-2">Type</th>
+                        <th class="bg-info text-white col-2">Address</th>
+                        <th class="bg-info text-white col-3">Message</th>
+                        <th class="bg-info text-white col-2">Destination</th>
+                        <th class="bg-info text-white col-1">Customer Id</th>
+                        <th class="bg-info text-white col-2" colspan="2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cust of donations" align="center">
+                        <td class="col-2">{{ cust.d_Id }}</td>
+                        <td class="col-2">{{ cust.d_type | uppercase }}</td>
+                        <td class="col-2">{{ cust.address | uppercase }}</td>
+                        <td class="col-3" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ cust.dmsg }}</td>
+                        <td class="col-2">{{ cust.dest }}</td>
+                        <td class="col-1">{{ cust.cust_id }}</td>
+                        <td class="col-2">
+                            <button (click)="editDonation(cust)" class="btn btn-info btn-lg">
+                                <span class="glyphicon glyphicon-pencil"></span> Edit
+                            </button>
+                        </td>
+                        <td class="col-2">
+                            <button (click)="deleteDonation(cust.cust_id)" class="btn btn-danger btn-lg">
+                                <span class="glyphicon glyphicon-trash"></span> Delete
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>

@@ -5,6 +5,17 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CustomerService {
+
+  private userData: any;
+
+  setUserData(data: any) {
+    this.userData = data;
+  }  
+
+  getUserData() {
+    return this.userData;
+  }
+  
   getCustomerById() {
     throw new Error('Method not implemented.');
   }
@@ -12,13 +23,9 @@ export class CustomerService {
   isUserLogged: boolean;
 
 
-  //Dependency Injection for HTTPClient
   constructor(private http: HttpClient) {
     this.isUserLogged = false;
-
   }
-
-
 
   getCountries(): any {
     return this.http.get('https://restcountries.com/v3.1/all');
@@ -28,11 +35,12 @@ export class CustomerService {
     return this.http.get('http://localhost:8085/getAllCustomers');
   }
 
-
-
-  
   getCustomersById(custId: any): any {
     return this.http.get('http://localhost:8085/getCustomerById/' + custId);
+  }
+
+  getCustomersByEmailId(emailId: any): any {
+    return this.http.get('http://localhost:8085/findByEmailId/' + emailId);
   }
 
   customerRegister(customer: any) {

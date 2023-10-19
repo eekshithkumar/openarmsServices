@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CustomerService } from 'src/app/customer.service';
 
 declare var jQuery: any;
@@ -8,7 +8,7 @@ declare var jQuery: any;
   templateUrl: './allusers.component.html',
   styleUrls: ['./allusers.component.css']
 })
-export class AllusersComponent {
+export class AllusersComponent implements OnInit {
 
   customers: any;
   coutriesList: any;
@@ -16,8 +16,8 @@ export class AllusersComponent {
 
   constructor(private service: CustomerService) {
     this.customerObj = {
-      "empId": "",
-      "fistName": "",
+      "custId": "",
+      "firstName": "", // Corrected the typo here
       "lastName": "",
       "gender": "",
       "dob": "",
@@ -25,7 +25,7 @@ export class AllusersComponent {
       "phone": "",
       "emailId": "",
       "password": "",
-  }
+    };
   }
 
   ngOnInit() {
@@ -35,23 +35,21 @@ export class AllusersComponent {
     });
 
     this.service.getCountries().subscribe((countriesData: any) => { this.coutriesList = countriesData; });
-  
   }
 
-
-  editCustomer(customer: any) {
-    this.customerObj = customer;
-    jQuery('#custModal').modal('show');
+  editCustomer(cust: any) {
+    this.customerObj = cust;
+    jQuery('#CustModal').modal('show');
   }
   updateCustomer() {
-    this.service.updateCustomer(this.customerObj).subscribe((data: any) => {console.log(data);});
+    this.service.updateCustomer(this.customerObj).subscribe((data: any) => { console.log(data); });
   }
 
-  deleteCustomer(empId: any) {
-    this.service.deleteCustomer(empId).subscribe((data: any) => {console.log(data);});  
-    const i = this.customers.forEach((customer: any) => {
-      return customer.empId == empId;
+  deleteCustomer(custId: any) {
+    this.service.deleteCustomer(custId).subscribe((data: any) => { console.log(data); });
+    const i = this.customers.forEach((cust: any) => {
+      return cust.custId == custId;
     });
-    this.customers.splice(i, 1);    
+    this.customers.splice(i, 1);
   }
 }

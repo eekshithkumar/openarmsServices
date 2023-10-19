@@ -1,0 +1,25 @@
+<app-header></app-header>
+<h1>Welcome, {{ customer.firstName }}</h1>
+<h1>Welcome, {{ customer.emailId }}</h1>
+<h1>Welcome, {{ customer.custId }}</h1>
+<div *ngIf="donations">
+    <div class="container">
+        <table class="table table-hover table-striped table-bordered">
+            <thead>
+                <tr align="center">
+                    <th class="bg-info text-white">Donation Id</th>
+                    <th class="bg-info text-white">Type</th>
+                    <th class="bg-info text-white">Message</th>
+                    <th class="bg-info text-white">Destination</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let donation of donations" align="center">
+                    <td>{{donation.d_Id   }}</td>
+                    <td>{{donation.address | uppercase}}</td>
+                    <td>{{donation.dmsg | uppercase }}</td>
+                    <td>{{donation.dest  }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>

@@ -1,11 +1,5 @@
 <app-adminheader></app-adminheader>
-<div style="padding-top: 50px;">
-
-
-</div>
-    <h1>Welcome {{emailId}}!</h1>
-    <br /><br />
-    <div align='center'>
+    <div align='center' style="padding-top: 30;">
         Enter Customer ID: <input type="text" name="custId" [(ngModel)]="custId" /> <br />
         <button (click)="getCustomer()">Get Customer</button>
     </div>
@@ -13,7 +7,6 @@
     <div *ngIf="customer">
         <div class="container">
             <table class="table table-hover table-striped table-bordered">
-
                 <thead>
                     <tr align="center">
                         <th class="bg-info text-white">EmpId</th>
@@ -24,6 +17,7 @@
                         <th class="bg-info text-white">DOB</th>
                         <th class="bg-info text-white">Phone</th>
                         <th class="bg-info text-white">EmailId</th>
+                        <th class="bg-info text-white" colspan="2">Actions</th>
                     </tr>
                 </thead>
 
@@ -37,8 +31,13 @@
                         <td>{{customer.dob}}</td>
                         <td>{{customer.phone}}</td>
                         <td>{{customer.emailId}}</td>
+                        <td><button  class="btn btn-info btn-lg"><span class="glyphicon glyphicon-pencil"></span> Edit 
+                        </button></td>
+                        <td><button  class="btn btn-info btn-lg"><span class="glyphicon glyphicon-pencil"></span> Delete 
+                        </button></td>
                     </tr>
                 </tbody>
 
             </table>
         </div>
+

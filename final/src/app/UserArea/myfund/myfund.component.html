@@ -1,0 +1,25 @@
+<app-header></app-header>
+<h1>Welcome, {{ customer.firstName }}</h1>
+<h1>Welcome, {{ customer.emailId }}</h1>
+<h1>Welcome, {{ customer.custId }}</h1>
+<div *ngIf="funds">
+    <div class="container">
+        <table class="table table-hover table-striped table-bordered">
+            <thead>
+                <tr align="center">
+                    <th class="bg-info text-white">Fund Id</th>
+                    <th class="bg-info text-white">Amount in Rs</th>
+                    <th class="bg-info text-white">Message</th>
+                    <th class="bg-info text-white">Destination</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fund of funds" align="center">
+                    <td>{{fund.f_Id}}</td>
+                    <td>{{fund.f_amount}}</td>
+                    <td>{{fund.fmsg }}</td>
+                    <td>{{fund.fdest}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>

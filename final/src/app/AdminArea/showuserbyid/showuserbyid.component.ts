@@ -14,6 +14,8 @@ export class ShowuserbyidComponent {
   customer: any;
   emailId: any;
 
+  customerObj: any;
+
   constructor(private service: CustomerService) {
     this.emailId = localStorage.getItem('emailId');
   }
@@ -23,4 +25,5 @@ export class ShowuserbyidComponent {
       this.customer = customerData;
     });
   }
+
 }
